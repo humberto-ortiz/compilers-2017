@@ -10,7 +10,10 @@ structure A = Absyn
 
 %nonterm  stm of A.stm | exp of A.exp | exps of A.exp list | prog of A.stm
 
-%right SEMICOLON
+%left SEMICOLON COMMA
+%left ASSIGN
+%left PLUS MINUS
+%left TIMES DIVIDE
 %pos int
 %verbose
 %start prog
