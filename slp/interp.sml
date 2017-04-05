@@ -12,7 +12,7 @@ type table = (string * int) list
 
 fun interp(s1 : A.stm) : unit =
     let
-	val env = []
+	val emptyenv = []
 	fun lookup ([], _) = raise Unbound
 	  | lookup ((name, value) :: t, id) =
 	    if id = name then value else lookup(t, id)
@@ -36,13 +36,13 @@ fun interp(s1 : A.stm) : unit =
 	    in
 		evalexp(exp1, env1)
 	    end
-	and evalstm (A.PrintStm ([]), env) = env
+	and evalstm (A.PrintStm ([]), env) = ( print "\n"; env )
 	  | evalstm (A.PrintStm (h::t), env) =
 	    let
 		val (v, e) = evalexp(h, env)
 	    in
 		print (Int.toString v);
-		print "\n";
+		print " ";
 		evalstm(A.PrintStm(t), e)
 	    end
 	  | evalstm (A.AssignStm (id, exp1), env1) =
@@ -59,6 +59,7 @@ fun interp(s1 : A.stm) : unit =
 		evalstm(s2, env1)
 	    end
     in
-	evalstm(s1, env) ; ()
+	evalstm(s1, emptyenv) ;
+	()
     end
 end
