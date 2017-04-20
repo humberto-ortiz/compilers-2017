@@ -10,3 +10,7 @@ Code for example problems
  slp/ - a nearly correct parser and interpreter for straight line programs.
  See the README for usage instructions. I still have some shift/reduce
  conflicts.
+
+ tiger/ - A skeleton compiler for tiger, using the code from Chapter
+ 3-6 and the examples we did in class. See the README.md there for
+ more details and examples.
